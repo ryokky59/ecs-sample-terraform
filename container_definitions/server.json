@@ -1,0 +1,36 @@
+[
+  {
+    "name": "sample-server",
+    "image": "XXX:latest",
+    "essential": true,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-region": "ap-northeast-1",
+        "awslogs-stream-prefix": "server",
+        "awslogs-group": "/ecs/server"
+      }
+    },
+    "portMappings": [{
+      "protocol": "tcp",
+      "containerPort": 8080
+    }],
+    "environment": [{
+        "name": "DB_USER",
+        "value": "user"
+      },
+      {
+        "name": "DB_PASSWORD",
+        "value": "password"
+      },
+      {
+        "name": "DB_HOST",
+        "value": "DB_NAME.XXX.rds.amazonaws.com"
+      },
+      {
+        "name": "DB_NAME",
+        "value": "test"
+      }
+    ]
+  }
+]
